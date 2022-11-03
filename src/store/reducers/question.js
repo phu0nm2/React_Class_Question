@@ -1,4 +1,4 @@
-import { actionType } from "../actions/type";
+import { actionType } from '../actions/type';
 
 const initialState = {
   questionList: [],
@@ -15,9 +15,7 @@ const reducers = (state = initialState, action) => {
     //
     case actionType.PUSH_ANSWER: {
       const cloneAnswer = [...state.DanhSachDapAn];
-      const foundIndex = cloneAnswer.findIndex(
-        (item) => item.QuestionId === payload.QuestionId
-      );
+      const foundIndex = cloneAnswer.findIndex((item) => item.QuestionId === payload.QuestionId);
       // console.log(action);
       if (foundIndex === -1) {
         cloneAnswer.push(payload);

@@ -1,7 +1,7 @@
-import React, { Component } from "react";
-import { connect } from "react-redux";
-import { createAction } from "../../store/actions";
-import { actionType } from "../../store/actions/type";
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { createAction } from '../../store/actions';
+import { actionType } from '../../store/actions/type';
 
 class FillQuestion extends Component {
   handleChange = (e) => {
@@ -14,11 +14,14 @@ class FillQuestion extends Component {
         exact: false,
       },
     };
-    console.log(answers.content);
+
+    // console.log(answers.content);
+
     if (choseAnswer.answer.content === answers[0].content.toLowerCase()) {
       choseAnswer.answer.exact = true;
-      console.log(choseAnswer.answer.content);
+      // console.log(choseAnswer.answer.content);
     }
+
     this.props.dispatch(createAction(actionType.PUSH_ANSWER, choseAnswer));
   };
 
@@ -29,7 +32,10 @@ class FillQuestion extends Component {
         <h3>
           Câu {id}: {content}
         </h3>
-        <input onChange={this.handleChange} type="text" />
+        <input
+          onChange={this.handleChange}
+          type="text"
+        />
       </div>
     );
   }

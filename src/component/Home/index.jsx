@@ -1,8 +1,8 @@
-import React, { Component } from "react";
-import { connect } from "react-redux";
-import { fetchQuestion } from "../../store/actions/question";
-import ChoiceQuestion from "../Question/ChoiceQuestion";
-import FillQuestion from "../Question/FillQuestion";
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { fetchQuestion } from '../../store/actions/question';
+import ChoiceQuestion from '../Question/ChoiceQuestion';
+import FillQuestion from '../Question/FillQuestion';
 
 class Home extends Component {
   handleSubmit = () => {
@@ -13,11 +13,12 @@ class Home extends Component {
         res++;
       }
     }
-    alert("Bạn trả lời đúng: " + res + "/" + this.props.DanhSachDapAn.length);
+    alert('Bạn trả lời đúng: ' + res + '/' + this.props.DanhSachDapAn.length);
   };
+
   render() {
     return (
-      <div>
+      <div style={{ margin: '20px 20px' }}>
         <h1>Online Test</h1>
         {this.props.question_Type.map((item, index) => {
           return (
@@ -31,12 +32,16 @@ class Home extends Component {
           );
         })}
 
-        <button onClick={this.handleSubmit} className="btn btn-success mt-2">
+        <button
+          onClick={this.handleSubmit}
+          className="btn btn-success mt-3"
+        >
           Nộp bài
         </button>
       </div>
     );
   }
+
   componentDidMount() {
     this.props.dispatch(fetchQuestion);
   }

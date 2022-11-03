@@ -1,12 +1,15 @@
-import React, { Component } from "react";
-import { connect } from "react-redux";
-import { createAction } from "../../store/actions";
-import { actionType } from "../../store/actions/type";
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { createAction } from '../../store/actions';
+import { actionType } from '../../store/actions/type';
 
 class ChoiceQuestion extends Component {
   handleChose = (item) => {
+    // console.log(item);
+
+    const { id } = this.props.item;
     const choseAnswer = {
-      QuestionId: this.props.item.id,
+      QuestionId: id,
       answer: {
         content: item.content,
         exact: item.exact,
@@ -30,12 +33,13 @@ class ChoiceQuestion extends Component {
           return (
             <div key={answer.id}>
               <input
+                style={{ height: '18px', width: '18px' }}
                 name={id}
                 onChange={() => this.handleChose(answer)}
                 value={answer.id}
                 type="radio"
               />
-              <label>{answer.content}</label>
+              <label style={{ marginLeft: '10px', fontSize: '18px' }}>{answer.content}</label>
             </div>
           );
         })}
